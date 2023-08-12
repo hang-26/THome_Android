@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <dimen name="dp40">40dp</dimen>
-    <dimen name="sp18">18sp</dimen>
-    <dimen name="dp400">400dp</dimen>
-    <dimen name="dp90">90dp</dimen>
-    <dimen name="sp30">30sp</dimen>
-</resources>
