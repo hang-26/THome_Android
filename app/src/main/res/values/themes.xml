@@ -1,0 +1,21 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.THome" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.THome" parent="Base.Theme.THome" />
+<!--    //splash screen-->
+<!--    <style name="Theme.App.SplashScreen" parent="Theme.SplashScreen">-->
+<!--        <item name="windowSplashScreenBackground">@color/red</item>-->
+<!--        <item name="postSplashScreenTheme">@style/Base.Theme.THome</item>-->
+<!--    </style>-->
+
+    <style name="FullScreen" parent="Theme.THome">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+</resources>
