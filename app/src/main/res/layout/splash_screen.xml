@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/coffee"
+    android:background="@color/coffe"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen">
+    tools:context=".start.SplashScreen">
     <com.airbnb.lottie.LottieAnimationView
         app:lottie_rawRes="@raw/home_js"
         android:id="@+id/ltt_spl_screen"
@@ -23,6 +23,6 @@
         android:gravity="center"
         android:textSize="@dimen/sp30"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
 </RelativeLayout>

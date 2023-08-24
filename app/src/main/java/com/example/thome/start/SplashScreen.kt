@@ -1,9 +1,10 @@
-package com.example.thome
+package com.example.thome.start
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import android.os.Handler
+import com.example.thome.R
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -11,7 +12,11 @@ class SplashScreen : AppCompatActivity() {
        /* Thread.sleep(5000)
         installSplashScreen()*/
         setContentView(R.layout.splash_screen)
-        val i = Intent(this,MainActivity::class.java)
-        startActivity(i)
+        Handler().postDelayed({
+            val i = Intent(this, OnBoardingActivity::class.java)
+            startActivity(i)
+            finish()
+        },3000)
+
     }
 }

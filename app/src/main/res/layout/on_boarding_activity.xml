@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/coffee"
+    tools:context=".start.OnBoardingActivity">
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/onboardingViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/view_pager_background"
+        app:layout_constraintBottom_toTopOf="@id/viewCenterOfNext"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <LinearLayout
+        android:id="@+id/indicatorsContainer"
+        android:layout_marginStart="@dimen/dp20"
+        android:layout_marginTop="@dimen/dp20"
+        android:layout_marginLeft="@dimen/dp20"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/textSkip"
+        android:text="@string/string_Skip"
+        android:textColor="@color/coffee"
+        android:textSize="@dimen/sp18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp15"
+        android:layout_marginEnd="@dimen/dp20"
+        android:layout_marginRight="@dimen/dp20"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+    <View
+        android:layout_width="@dimen/dp55"
+        android:layout_height="@dimen/dp55"
+        android:background="@drawable/icon_outer_background"
+        app:layout_constraintBottom_toBottomOf="@id/imv_next"
+        app:layout_constraintStart_toStartOf="@id/imv_next"
+        app:layout_constraintTop_toTopOf="@id/imv_next" />
+    <View
+        android:id="@+id/viewCenterOfNext"
+        android:layout_width="@dimen/dp1"
+        android:layout_height="@dimen/dp1"
+        app:layout_constraintBottom_toBottomOf="@id/imv_next"
+        app:layout_constraintEnd_toEndOf="@id/imv_next"
+        app:layout_constraintStart_toStartOf="@id/imv_next"
+        app:layout_constraintTop_toTopOf="@id/imv_next"/>
+    <ImageView
+        android:id="@+id/imv_next"
+        android:layout_marginBottom="@dimen/dp50"
+        android:background="@drawable/icon_background"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/round_right"
+        app:layout_constraintBottom_toTopOf="@+id/buttonGetStarted"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="@dimen/dp45"
+        android:layout_height="45dp"
+        app:tint="@color/white" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/buttonGetStarted"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_marginBottom="@dimen/dp50"
+        android:paddingStart="@dimen/dp40"
+        android:paddingEnd="@dimen/dp40"
+        android:text="@string/get_started"
+        android:textAllCaps="false"
+        android:textSize="@dimen/sp20"
+        android:textStyle="bold"
+        app:backgroundTint="@color/custom_color_secondary"
+        app:cornerRadius="@dimen/dp16"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
