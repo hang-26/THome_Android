@@ -7,14 +7,15 @@ plugins {
 
 android {
     namespace 'com.example.thome'
-    compileSdk 33
+    compileSdk 33 //version của Android muốn chỉ định
 
     defaultConfig {
         applicationId "com.example.thome"
-        minSdk 24
-        targetSdk 33
-        versionCode 1
-        versionName "1.0"
+        minSdk 24//Thông số version nhỏ nhaats mà project hỗ trợ
+        targetSdk 33//version mới nhất mà project hỗ trợ
+        versionCode 1//cho hệ thống biết các phiên bản cập nhật của app
+        versionName "1.0"//là version sẽ đc GG Play hiện ra khi user dow va ins
+                        //Được hiển thị trong setting của app
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,7 +38,7 @@ android {
         jvmTarget = '1.8'
     }
 }
-
+//Định nghĩa ra các thư viện
 dependencies {
 
     implementation 'androidx.core:core-ktx:1.10.1'

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/custom_color_secondary"
+    tools:context=".start.login.LoginActivity">
+
+    <TextView
+        android:id="@+id/label_app"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="casual"
+        android:gravity="center"
+        android:text="Login"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp30"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3" />
+    <EditText
+        android:id="@+id/et_user_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_app"
+        android:layout_marginHorizontal="@dimen/dp16"
+        android:layout_marginVertical="@dimen/dp16"
+        android:padding="@dimen/dp16"
+        android:background="@drawable/custom_edit_text"
+        android:hint="user name"
+        />
+    <EditText
+        android:id="@+id/et_pass_work"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_user_name"
+        android:layout_marginHorizontal="@dimen/dp16"
+        android:layout_marginVertical="@dimen/dp16"
+        android:padding="@dimen/dp16"
+        android:background="@drawable/custom_edit_text"
+        android:hint="pass work"
+        />
+    <TextView
+        android:id="@+id/tv_question_account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/et_pass_work"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@id/et_pass_work"
+        app:layout_constraintEnd_toEndOf="@id/et_pass_work"
+        android:text="Haven't you account?"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/tv_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@id/tv_question_account"
+        app:layout_constraintTop_toTopOf="@id/tv_question_account"
+        android:layout_marginHorizontal="@dimen/dp8"
+        android:text="Signup"
+        android:fontFamily="casual"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        />
+</androidx.constraintlayout.widget.ConstraintLayout>

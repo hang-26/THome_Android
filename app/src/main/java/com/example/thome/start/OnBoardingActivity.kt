@@ -14,6 +14,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.example.thome.R
 import com.example.thome.start.adapter.OnboardingItemsAdapter
 import com.example.thome.start.home.HomeActivity
+import com.example.thome.start.login.LoginActivity
 import com.google.android.material.button.MaterialButton
 import java.text.FieldPosition
 
@@ -43,10 +44,10 @@ class OnBoardingActivity : AppCompatActivity() {
                 OnboardingItem(
                     onboardingImage = R.raw.animation_service,
                     title ="THome2",
-                    description = "Thao tác nhanh"
+                    description = "Tiện lợi"
                 ),
                 OnboardingItem(
-                    onboardingImage = R.raw.icon_home,
+                    onboardingImage = R.raw.raw_bin,
                     title ="THome3",
                     description = "Thao tác nhanh"
                 )
@@ -64,24 +65,26 @@ class OnBoardingActivity : AppCompatActivity() {
         })
         (onboardingViewPager.getChildAt(0)as RecyclerView).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
         findViewById<ImageView>(R.id.imv_next).setOnClickListener {
-            if (onboardingViewPager.currentItem+1 < onboardingItemsAdapter.itemCount){
-                onboardingViewPager.currentItem+=1
+            if (onboardingViewPager.currentItem + 1 < onboardingItemsAdapter.itemCount){
+                onboardingViewPager.currentItem += 1
             }else{
-                navigateToHomeActivity()
+                navigateToLoginActivity()
             }
             findViewById<TextView>(R.id.textSkip).setOnClickListener {
-                navigateToHomeActivity()
-            }
-            findViewById<MaterialButton>(R.id.buttonGetStarted).setOnClickListener {
-                navigateToHomeActivity()
+                navigateToLoginActivity()
             }
         }
+        findViewById<MaterialButton>(R.id.buttonGetStarted).setOnClickListener {
+            navigateToLoginActivity()
+        }
+
     }
-//Chuyển sang màn hình HomeActivity
-    private fun navigateToHomeActivity(){
-        val intent = Intent(applicationContext, HomeActivity::class.java)
+//Chuyển sang màn hình Login
+    private fun navigateToLoginActivity(){
+        val intent = Intent(applicationContext, LoginActivity::class.java)
         startActivity(intent)
     }
+
     private  fun setupIndicators(){
         indicatorsContainer = findViewById(R.id.indicatorsContainer)
         val indicators = arrayOfNulls<ImageView>(onboardingItemsAdapter.itemCount)

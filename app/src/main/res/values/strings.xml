@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">THome</string>
     <string name="get_started">Get Started</string>
-    <string name="string_Skip">Skip</string>
+    <string name="string_Skip" translatable="false">Skip</string>
 </resources>

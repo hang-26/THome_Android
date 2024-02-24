@@ -17,4 +17,9 @@
     <dimen name="dp30">30dp</dimen>
     <dimen name="sp16">16sp</dimen>
     <dimen name="dp8">8dp</dimen>
+    <dimen name="sp25">25sp</dimen>
+    <dimen name="dp10">10dp</dimen>
+    <dimen name="dp6">6dp</dimen>
+    <dimen name="sp15">15sp</dimen>
+    <dimen name="dp48">48dp</dimen>
 </resources>
