@@ -4,6 +4,8 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
+import android.widget.Toast
 import com.example.thome.start.data.user.UserData
 
 class DataClass(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null, DATABASE_VERSION) {
@@ -56,14 +58,18 @@ class DataClass(context: Context): SQLiteOpenHelper(context, DATABASE_NAME, null
 
     fun checkUser(typeUser: Int, userName: String, userPass: String): Boolean {
         var db = readableDatabase
-        var query = "SELECT * FROM ${UserContractClass.UserEntry.TABLE_NAME } WHERE ${UserContractClass.UserEntry} =? " +
-                "AND ${UserContractClass.UserEntry.COLUMN_PASSWORD}  = ?" +
-                "AND ${UserContractClass.UserEntry.COLUMN_USER_TYPE} = ?"
+        var query = "SELECT * FROM ${UserContractClass.UserEntry.TABLE_NAME } WHERE ${UserContractClass.UserEntry.COLUMN_USER_TYPE} =? AND ${UserContractClass.UserEntry.COLUMN_USERNAME}  = ? AND ${UserContractClass.UserEntry.COLUMN_PASSWORD} = ?"
 
+//        var query1 = "SELECT * FROM ${UserContractClass.UserEntry.TABLE_NAME} WHERE ${UserContractClass.UserEntry.COLUMN_USER_TYPE} =? AND ${UserContractClass.UserEntry.COLUMN_USERNAME} =? AND ${UserContractClass.UserEntry.COLUMN_PASSWORD}"
         var cursor = db.rawQuery(query, arrayOf(typeUser.toString(), userName, userPass))
         var count = cursor.count
         cursor.close()
-        return count > 0
+        if (count == 0) {
+            Log.d(javaClass.simpleName, "checkUser: ")
+            return false
+        } else
+            return true
+
     }
 
     fun checkExitUser (typeUser: Int, userName: String): Boolean {

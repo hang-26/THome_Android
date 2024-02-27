@@ -21,7 +21,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintVertical_bias="0.2" />
     <EditText
         android:id="@+id/et_user_name"
         android:layout_width="match_parent"
@@ -48,8 +48,47 @@
         android:background="@drawable/custom_edit_text"
         android:hint="pass work"
         />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/et_pass_work"
+        app:layout_constraintStart_toStartOf="@id/et_pass_work"
+        app:layout_constraintEnd_toEndOf="@id/et_pass_work"
+        >
+        <RadioButton
+            android:id="@+id/rb_renter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Renter"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            />
+        <RadioButton
+            android:id="@+id/rbDomesticWorker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Domestic Worker"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="@id/et_pass_work"
+        app:layout_constraintEnd_toEndOf="@id/et_pass_work"
+        app:layout_constraintBottom_toBottomOf="@id/radioGroup"
+        app:layout_constraintBottom_toTopOf="@id/tvQuestionAccount"
+        android:text="Login"
+
+        />
+
     <TextView
-        android:id="@+id/tv_question_account"
+        android:id="@+id/tvQuestionAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@id/et_pass_work"
@@ -59,12 +98,13 @@
         android:text="Haven't you account?"
         android:textColor="@color/white"
         />
+
     <TextView
-        android:id="@+id/tv_signup"
+        android:id="@+id/tvSignup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/tv_question_account"
-        app:layout_constraintTop_toTopOf="@id/tv_question_account"
+        app:layout_constraintStart_toEndOf="@id/tvQuestionAccount"
+        app:layout_constraintTop_toTopOf="@id/tvQuestionAccount"
         android:layout_marginHorizontal="@dimen/dp8"
         android:text="Signup"
         android:fontFamily="casual"

@@ -12,6 +12,8 @@ import com.example.thome.databinding.ActivitySignupBinding
 import com.example.thome.start.data.DataClass
 import com.example.thome.start.data.UserContractClass
 import com.example.thome.start.data.user.UserData
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 class SignupActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignupBinding
@@ -37,7 +39,7 @@ class SignupActivity : AppCompatActivity() {
             val passUser = binding.edtPass.text.toString()
             val rePass = binding.edtRePass.text.toString()
 
-            handelRegister(userName, passUser, rePass)
+            registerFireBase(userName, passUser, rePass)
 
         }
     }
@@ -52,6 +54,40 @@ class SignupActivity : AppCompatActivity() {
 
     }
 
+    fun registerFireBase(userName: String, passUser: String, rePass: String ) {
+        var auth = Firebase.auth
+        if (userName.isNotEmpty() && passUser.isNotEmpty()) {
+            if (passUser == rePass) {
+
+                auth.createUserWithEmailAndPassword(userName, passUser)
+                    .addOnCompleteListener(this) { task ->
+                        if (task.isSuccessful) {
+                            // Sign in success, update UI with the signed-in user's information
+                            Log.d(javaClass.simpleName, "createUserWithEmail:success")
+                            Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show()
+//                        val user = auth.currentUser
+//                        updateUI(user)
+                        } else {
+                            // If sign in fails, display a message to the user.
+                            Log.w(javaClass.simpleName, "createUserWithEmail:failure", task.exception)
+                            Toast.makeText(
+                                baseContext,
+                                "Authentication failed.",
+                                Toast.LENGTH_SHORT,
+                            ).show()
+//                        updateUI(null)
+                        }
+                    }
+
+            } else {
+                Toast.makeText(this, "Nhắc lại mật khẩu phải trùng với mật khẩu", Toast.LENGTH_SHORT).show()
+            }
+
+        } else
+            Toast.makeText(this, "Tên và mật khẩu không được để trống", Toast.LENGTH_SHORT).show()
+    }
+
+
     fun handelRegister(userName: String, passUser: String, rePass: String) {
 
         /**
@@ -65,7 +101,7 @@ class SignupActivity : AppCompatActivity() {
 
         if (passUser.isNotEmpty() && userName.isNotEmpty()) {
             if (rePass.equals(passUser)  && check.equals(false)) {
-//                    dataHelper.insertUser(user)
+                dataHelper.insertUser(user)
                 Log.d(javaClass.simpleName, "setOnClickListener: ")
                 Toast.makeText(this, "Đăng ký thành công", Toast.LENGTH_SHORT).show()
             } else {

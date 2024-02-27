@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "105489523532",
+    "project_id": "hang-project-e1601",
+    "storage_bucket": "hang-project-e1601.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:105489523532:android:488a685411bf40093265e9",
+        "android_client_info": {
+          "package_name": "com.example.thome"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKPTLB4mEiqwOAJdG8h5qUPb8BlbolA4I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
