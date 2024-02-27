@@ -25,7 +25,7 @@ class SignupActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
         dataHelper = DataClass(this)
-        selectRadioButton()
+//        selectRadioButton()
         setOnClickListener()
     }
 
@@ -44,15 +44,15 @@ class SignupActivity : AppCompatActivity() {
         }
     }
 
-    fun selectRadioButton() {
-        if (binding.rbRender.isChecked) {
-            useType = 0
-        }
-        else if (binding.rbDomesticWorker.isChecked) {
-            useType = 1
-        }
-
-    }
+//    fun selectRadioButton() {
+//        if (binding.rbRender.isChecked) {
+//            useType = 0
+//        }
+//        else if (binding.rbDomesticWorker.isChecked) {
+//            useType = 1
+//        }
+//
+//    }
 
     fun registerFireBase(userName: String, passUser: String, rePass: String ) {
         var auth = Firebase.auth

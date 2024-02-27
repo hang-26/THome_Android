@@ -2,18 +2,23 @@ package com.example.thome.start.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.thome.R
 import com.example.thome.start.adapter.FragmentPageAdapter
 import com.google.android.material.tabs.TabLayout
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var tabLayout: TabLayout
     private lateinit var viewPager2: ViewPager2
     private lateinit var adapter: FragmentPageAdapter
+    var auth = Firebase.auth
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -24,11 +29,15 @@ class HomeActivity : AppCompatActivity() {
 
 
         adapter = FragmentPageAdapter(supportFragmentManager, lifecycle)
+        setViewHome()
 
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.home).setText("Home"))
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.bells).setText("Notice"))
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.activity).setText("Activity"))
-        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.account).setText("Account"))
+    }
+
+    fun setViewHome() {
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.home).setText("Trang chủ"))
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.bells).setText("Quản lý tin"))
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.activity).setText("Xem tin"))
+        tabLayout.addTab(tabLayout.newTab().setIcon(R.drawable.account).setText("Tài khoản"))
 
         viewPager2.adapter = adapter
 
@@ -40,11 +49,9 @@ class HomeActivity : AppCompatActivity() {
             }
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {
-
             }
 
             override fun onTabReselected(tab: TabLayout.Tab?) {
-
             }
 
         })
@@ -55,5 +62,6 @@ class HomeActivity : AppCompatActivity() {
                 tabLayout.selectTab(tabLayout.getTabAt(position))
             }
         })
+
     }
 }

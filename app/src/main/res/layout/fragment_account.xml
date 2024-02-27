@@ -1,17 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.NoticeFragment"
-    android:background="@color/white"
-    >
+    android:background="@color/white">
 
+    <ImageView
+        android:id="@+id/ivAvatar"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginHorizontal="@dimen/dp16"
+        android:layout_marginVertical="@dimen/dp16"
+        android:src="@drawable/ic_user"
+        />
     <TextView
-        android:textSize="25dp"
-        android:gravity="center"
-        android:text="Account Fragment"
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="@id/ivAvatar"
+        app:layout_constraintBottom_toBottomOf="@id/ivAvatar"
+        app:layout_constraintStart_toEndOf="@id/ivAvatar"
+        android:layout_marginVertical="@dimen/dp8"
+        android:layout_marginHorizontal="@dimen/dp16"
+        android:text="Tên người dùng"
+        android:textSize="@dimen/sp25"
+        android:textStyle="bold"
+        />
+    <TextView
+        android:id="@+id/tvManagerActive"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-</FrameLayout>
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/ivAvatar"
+        app:layout_constraintStart_toStartOf="@id/ivAvatar"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginVertical="@dimen/dp20"
+        android:text="Quản hoạt động"
+        android:textStyle="bold"
+        android:textSize="@dimen/sp18"
+        android:layout_marginHorizontal="@dimen/dp16"
+        android:textColor="@color/grey_two"
+        />
+    <Button
+        android:id="@+id/btLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="@dimen/dp16"
+        android:layout_marginVertical="@dimen/dp8"
+        android:text="Đăng xuất"
+        android:textSize="@dimen/sp18"
+        android:backgroundTint="@color/custom_color_text_secondary"
+/>
+</androidx.constraintlayout.widget.ConstraintLayout>

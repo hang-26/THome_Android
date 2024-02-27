@@ -11,9 +11,12 @@ import com.example.thome.databinding.ActivityLoginBinding
 import com.example.thome.start.data.DataClass
 import com.example.thome.start.data.user.UserData
 import com.example.thome.start.home.HomeActivity
+import com.google.firebase.Firebase
+import com.google.firebase.auth.auth
 
 class LoginActivity : AppCompatActivity() {
     lateinit var binding: ActivityLoginBinding
+    val auth = Firebase.auth
     val startActivityForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
         if (it.resultCode == RESULT_OK) {
 
@@ -33,6 +36,7 @@ class LoginActivity : AppCompatActivity() {
         Log.d(javaClass.simpleName, "onCreate: $userType")
         setEventOnClick()
     }
+
     fun setEventOnClick() {
         binding.tvSignup.setOnClickListener {
             val intent = Intent(this, SignupActivity::class.java)
@@ -40,38 +44,50 @@ class LoginActivity : AppCompatActivity() {
         }
 
         binding.btLogin.setOnClickListener {
-            handlerLogin()
+            loginWithFireBase()
         }
     }
 
-    fun setUserType() {
 
-        if (binding.rbRenter.isChecked) {
-            userType = 0
-        }
-        else if (binding.rbDomesticWorker.isChecked) {
-            userType = 1
-        }
-    }
+    fun loginWithFireBase() {
 
-    fun handlerLogin() {
-        setUserType()
+        val intentStartActivity = Intent(this, HomeActivity::class.java)
         var userName = binding.etUserName.text.toString()
-        var passUser = binding.etPassWork.text.toString()
+        var pass = binding.etPassWork.text.toString()
+        val currentUser = auth.currentUser
 
-        Log.d(javaClass.simpleName, "setEventOnClick: $userName")
-        Log.d(javaClass.simpleName, "setEventOnClick: $passUser")
-        Log.d(javaClass.simpleName, "setEventOnClick: $userType")
+        if (currentUser != null) {
+            Log.d(javaClass.simpleName, "onStart:Đăng nhập thành công trước đó ")
+            val nameUser = currentUser.displayName
+            intentStartActivity.putExtra("user", nameUser)
+            Log.d(javaClass.simpleName, "loginWithFireBase: $nameUser")
+            Log.d(javaClass.simpleName, "loginWithFireBase: ${currentUser.email}")
+            startActivityForResult.launch(intentStartActivity)
+        } else {
+            auth.signInWithEmailAndPassword(userName, pass)
+                .addOnCompleteListener(this) { task ->
 
-        if (userName.isNotEmpty() && passUser.isNotEmpty()) {
-            var check = dataHelper.checkUser(userType, userName, passUser)
-            Log.d(javaClass.simpleName, "setEventOnClick: $check ")
-            if (check == true) {
-                Toast.makeText(this, "Đăng nhập thành công", Toast.LENGTH_SHORT).show()
-                var intentHome = Intent(this, HomeActivity::class.java)
-                startActivityForResult.launch(intentHome)
-            }
+                    if (task.isSuccessful) {
+                        // Sign in success, update UI with the signed-in user's information
+                        Log.d(javaClass.simpleName, "signInWithEmail:thành công")
+                        startActivityForResult.launch(intentStartActivity)
+                        val user = auth.currentUser
+                        intentStartActivity.putExtra("user", user?.displayName)
+                        startActivityForResult.launch(intentStartActivity)
+                    } else {
+                        // If sign in fails, display a message to the user.
+                        Log.d(javaClass.simpleName, "signInWithEmail:Lỗi")
+                        Toast.makeText(
+                            baseContext,
+                            "Authentication failed.",
+                            Toast.LENGTH_SHORT,
+                        ).show()
+                    }
+
+                }
+
         }
+
     }
 
 }
